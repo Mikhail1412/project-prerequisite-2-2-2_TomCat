@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Cars</title>
+</head>
+<body>
+<h1>Cars</h1>
+
+<p>
+    <a th:href="@{/cars}">Все</a> |
+    <a th:href="@{/cars(count=2)}">2</a> |
+    <a th:href="@{/cars(count=3)}">3</a> |
+    <a th:href="@{/cars(count=5)}">5</a>
+</p>
+
+<table border="1" cellpadding="6">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Model</th>
+        <th>Series</th>
+        <th>Color</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="car, st : ${cars}">
+        <td th:text="${st.index + 1}">1</td>
+        <td th:text="${car.model}">BMW</td>
+        <td th:text="${car.series}">3</td>
+        <td th:text="${car.color}">black</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
