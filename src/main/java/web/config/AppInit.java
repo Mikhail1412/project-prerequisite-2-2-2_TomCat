@@ -1,5 +1,6 @@
 package web.config;
 
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -26,4 +27,10 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
         return new String[]{"/"};
     }
 
+    // В AppInit (инициализаторе)
+    @Override
+    protected javax.servlet.Filter[] getServletFilters() {
+        CharacterEncodingFilter f = new CharacterEncodingFilter("UTF-8", true);
+        return new javax.servlet.Filter[]{ f };
+    }
 }
